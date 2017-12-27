@@ -24,6 +24,8 @@ public class FileProcessor {
     public Map<String, Integer> countFileChars() {
         HashMap<String, Integer> result = new HashMap<>();
 
+        System.out.println("Start processing file");
+
         try (Stream<String> stream = Files.lines(Paths.get(inputFilePath), Charset.forName("Cp1252"))) {
 
             stream.forEach(new LineProcessor(result));
@@ -31,6 +33,8 @@ public class FileProcessor {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        System.out.println("Processing done. Number of results: " + result.size());
 
         return result;
     }
